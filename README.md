@@ -1,1 +1,1 @@
-# infinite-dotolist
+# React + TypeScript + Vite
