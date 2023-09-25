@@ -2,7 +2,7 @@ import './styles/global.scss';
 
 import { useState } from 'react';
 
-import { Checkbox, Input } from 'src/shared/ui';
+import { Checkbox, Input, Textarea } from 'src/shared/ui';
 
 import { MainLayout } from './layouts';
 
@@ -12,12 +12,13 @@ const App = () => {
   return (
     <MainLayout>
       <h1>SNUS</h1>
-      <Input />
+      <Input placeholder="Write todo" />
       <Checkbox
         label="SNUS"
         checked={checked}
         onChange={() => setChecked((prev) => !prev)}
       />
+      <Textarea placeholder="Write description" />
     </MainLayout>
   );
 };

@@ -1,8 +1,10 @@
-.input {
+.textarea {
+  min-height: 150px;
   border: 2px solid #5b52c5;
-  color: #5b52c5;
   padding: 6px 10px;
   border-radius: 6px;
+  resize: none;
+  color: #5b52c5;
 
   &::placeholder {
     color: rgba(#5b52c5, .6);
