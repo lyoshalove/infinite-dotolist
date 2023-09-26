@@ -6,7 +6,7 @@ export const cn = (
   const result = [
     className,
     ...(requiredClassNames ?? []).filter(Boolean),
-    Object.entries(mods ?? {})
+    ...Object.entries(mods ?? {})
       .filter(([, value]) => Boolean(value))
       .map(([name]) => name),
   ];

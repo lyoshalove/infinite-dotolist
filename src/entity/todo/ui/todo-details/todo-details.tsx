@@ -22,6 +22,9 @@ export const TodoDetails = observer(() => {
         <p className={styles.todoDescription}>
           Description: {activeTodo?.description}
         </p>
+        <p className={styles.todoCompleted}>
+          Status: {activeTodo?.isCompleted ? 'Completed' : 'Not completed'}
+        </p>
         <Button
           text="Close details"
           onClick={closeTodoDetails}

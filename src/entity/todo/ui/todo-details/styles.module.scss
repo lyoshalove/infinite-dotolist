@@ -28,6 +28,12 @@
 }
 
 .todoDescription {
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.todoCompleted {
   margin-bottom: 15px;
   text-overflow: ellipsis;
   overflow: hidden;

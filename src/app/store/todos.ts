@@ -26,11 +26,15 @@ class Todos {
     return this.todoName.trim();
   }
 
+  get trimmedTodoDescription() {
+    return this.todoDesciption.trim();
+  }
+
   getNewTodo() {
     const newTodo: Todo = {
       id: uuidv4(),
-      name: this.todoName,
-      description: this.todoDesciption,
+      name: this.trimmedTodoName,
+      description: this.trimmedTodoDescription,
       isCompleted: false,
       subTodos: [],
     };
@@ -59,8 +63,7 @@ class Todos {
     this.todoArray.push(this.getNewTodo());
 
     localStorage.setItem(LOCALSTORAGE_TODOS, JSON.stringify(this.todoArray));
-    this.setTodoName('');
-    this.setTodoDescription('');
+    this.clearFieldsValues();
   }
 
   addSubtodo(id: string) {
@@ -71,8 +74,7 @@ class Todos {
     this.todoArray = addingSubtodo(id, this.todoArray, this.getNewTodo());
 
     localStorage.setItem(LOCALSTORAGE_TODOS, JSON.stringify(this.todoArray));
-    this.setTodoName('');
-    this.setTodoDescription('');
+    this.clearFieldsValues();
   }
 
   removeTodo(id: string) {

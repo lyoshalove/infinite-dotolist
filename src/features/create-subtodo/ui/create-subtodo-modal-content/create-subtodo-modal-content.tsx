@@ -1,3 +1,4 @@
+import { ChangeEvent, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { todos } from 'src/app/store';
@@ -13,7 +14,7 @@ interface CreateSubTodoModalContentProps {
 
 export const CreateSubTodoModalContent = observer(
   ({ id, onClose }: CreateSubTodoModalContentProps) => {
-    const addTodo = () => {
+    const addTodo = useCallback(() => {
       if (!todos.trimmedTodoName) {
         return;
       }
@@ -21,20 +22,34 @@ export const CreateSubTodoModalContent = observer(
       todos.addSubtodo(id);
       onClose();
       todos.clearFieldsValues();
-    };
+    }, [id, onClose]);
+
+    const changeTodoNameHandler = useCallback(
+      (event: ChangeEvent<HTMLInputElement>) => {
+        todos.setTodoName(event.target.value);
+      },
+      [],
+    );
+
+    const changeTodoDescriptionHandler = useCallback(
+      (event: ChangeEvent<HTMLTextAreaElement>) => {
+        todos.setTodoDescription(event.target.value);
+      },
+      [],
+    );
 
     return (
       <>
         <h2 className={styles.title}>Create todo</h2>
         <Input
           value={todos.todoName}
-          onChange={(e) => todos.setTodoName(e.target.value)}
+          onChange={changeTodoNameHandler}
           placeholder="Todo name"
           className={styles.input}
         />
         <Textarea
           value={todos.todoDesciption}
-          onChange={(e) => todos.setTodoDescription(e.target.value)}
+          onChange={changeTodoDescriptionHandler}
           placeholder="Todo description"
           className={styles.textarea}
         />
