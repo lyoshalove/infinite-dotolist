@@ -11,15 +11,21 @@ import {
 import { LOCALSTORAGE_TODOS } from 'src/shared/constants';
 
 class Todos {
-  todoArray: Todo[] = localStorage.getItem(LOCALSTORAGE_TODOS)
-    ? JSON.parse(localStorage.getItem(LOCALSTORAGE_TODOS) || '[]')
-    : [];
+  todoArray: Todo[];
   activeTask: Todo | null = null;
   todoName = '';
   todoDesciption = '';
 
   constructor() {
     makeAutoObservable(this);
+
+    try {
+      this.todoArray = localStorage.getItem(LOCALSTORAGE_TODOS)
+        ? JSON.parse(localStorage.getItem(LOCALSTORAGE_TODOS) || '[]')
+        : [];
+    } catch (e) {
+      this.todoArray = [];
+    }
   }
 
   get trimmedTodoName() {
