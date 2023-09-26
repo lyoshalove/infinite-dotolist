@@ -13,11 +13,6 @@ interface CreateSubTodoModalContentProps {
 
 export const CreateSubTodoModalContent = observer(
   ({ id, onClose }: CreateSubTodoModalContentProps) => {
-    const clearFieldsValues = () => {
-      todos.setTodoName('');
-      todos.setTodoName('');
-    };
-
     const addTodo = () => {
       if (!todos.trimmedTodoName) {
         return;
@@ -25,7 +20,7 @@ export const CreateSubTodoModalContent = observer(
 
       todos.addSubtodo(id);
       onClose();
-      clearFieldsValues();
+      todos.clearFieldsValues();
     };
 
     return (

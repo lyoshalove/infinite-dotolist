@@ -1,0 +1,38 @@
+.todoDetails {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  max-width: 350px;
+  width: 0;
+  padding: 15px;
+  color: #5b52c5;
+  transform: translateX(100%);
+  transition: all .5s;
+  will-change: transform, width;
+  border-left: 2px solid #5b52c5;
+}
+
+.opened {
+  transform: translateX(0);
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.todoName {
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.todoDescription {
+  margin-bottom: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.button {
+  margin-top: auto;
+}

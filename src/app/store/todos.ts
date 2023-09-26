@@ -46,6 +46,11 @@ class Todos {
     this.todoDesciption = newValue;
   }
 
+  clearFieldsValues() {
+    this.setTodoName('');
+    this.setTodoDescription('');
+  }
+
   addTodo() {
     if (!this.trimmedTodoName) {
       return;
@@ -87,7 +92,13 @@ class Todos {
     localStorage.setItem(LOCALSTORAGE_TODOS, JSON.stringify(this.todoArray));
   }
 
-  setActiveTask(id: string) {
+  setActiveTask(id: string | null) {
+    if (id === null) {
+      this.activeTask = null;
+
+      return;
+    }
+
     this.activeTask = recursionSearch(id, this.todoArray);
   }
 }

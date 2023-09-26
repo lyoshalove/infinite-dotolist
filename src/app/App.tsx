@@ -4,13 +4,13 @@ import { TodoDetails, Todolist } from 'src/entity/todo';
 
 import { MainLayout } from './layouts';
 
-const App = () => {
-  return (
+const App = () => (
+  <div className="app">
     <MainLayout>
       <Todolist />
-      <TodoDetails />
     </MainLayout>
-  );
-};
+    <TodoDetails />
+  </div>
+);
 
 export default App;

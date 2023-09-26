@@ -12,11 +12,6 @@ interface CreateTodoModalContentProps {
 
 export const CreateTodoModalContent = observer(
   ({ onClose }: CreateTodoModalContentProps) => {
-    const clearFieldsValues = () => {
-      todos.setTodoName('');
-      todos.setTodoName('');
-    };
-
     const addTodo = () => {
       if (!todos.trimmedTodoName) {
         return;
@@ -24,7 +19,7 @@ export const CreateTodoModalContent = observer(
 
       todos.addTodo();
       onClose();
-      clearFieldsValues();
+      todos.clearFieldsValues();
     };
 
     return (

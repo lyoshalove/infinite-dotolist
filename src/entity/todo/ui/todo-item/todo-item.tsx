@@ -27,18 +27,21 @@ export const TodoItem = observer(({ todo }: TodoItemProps) => {
   const closeModal = useCallback(() => setIsModalShow(false), []);
   const toggleIsSubtodosShow = () => setIsSubtodosShow((prev) => !prev);
 
+  const isShowArrow = subTodos.length > 0;
   const showTodosCondition = subTodos.length > 0 && isSubtodosShow;
 
   return (
     <>
       <div className={styles.todoItem}>
         <div className={styles.todoInfo}>
-          <div
-            className={cn(styles.arrow, [], {
-              [styles.arrowRotated]: isSubtodosShow,
-            })}
-            onClick={toggleIsSubtodosShow}
-          />
+          {isShowArrow && (
+            <div
+              className={cn(styles.arrow, [], {
+                [styles.arrowRotated]: isSubtodosShow,
+              })}
+              onClick={toggleIsSubtodosShow}
+            />
+          )}
           <h3
             className={styles.todoName}
             onClick={() => todos.setActiveTask(id)}>

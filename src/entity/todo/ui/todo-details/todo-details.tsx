@@ -1,23 +1,33 @@
 import { observer } from 'mobx-react-lite';
 
 import { todos } from 'src/app/store';
+import { cn } from 'src/shared/lib';
+import { Button } from 'src/shared/ui';
 
 import styles from './styles.module.scss';
 
 export const TodoDetails = observer(() => {
   const activeTodo = todos.activeTask;
 
+  const closeTodoDetails = () => todos.setActiveTask(null);
+
   return (
     <>
-      {todos.activeTask && (
-        <div className={styles.todoDetails}>
-          <h2 className={styles.title}>Todo info</h2>
-          <h3 className={styles.todoName}>Name: {activeTodo?.name}</h3>
-          <p className={styles.todoDescription}>
-            Description: {activeTodo?.description}
-          </p>
-        </div>
-      )}
+      <div
+        className={cn(styles.todoDetails, [], {
+          [styles.opened]: !!activeTodo?.name,
+        })}>
+        <h2 className={styles.title}>Todo info</h2>
+        <h3 className={styles.todoName}>Name: {activeTodo?.name}</h3>
+        <p className={styles.todoDescription}>
+          Description: {activeTodo?.description}
+        </p>
+        <Button
+          text="Close details"
+          onClick={closeTodoDetails}
+          className={styles.button}
+        />
+      </div>
     </>
   );
 });
